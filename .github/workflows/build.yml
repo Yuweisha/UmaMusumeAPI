@@ -1,0 +1,61 @@
+
+name: Build UmaMusumeAPI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Show SDK version
+        run: dotnet --info
+
+      - name: Restore dependencies
+        run: dotnet restore UmaMusumeAPI.sln
+
+      - name: Build solution
+        run: dotnet build UmaMusumeAPI.sln --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test UmaMusumeAPI.sln --configuration Release --no-build --logger "console;verbosity=normal"
+
+      - name: Publish API
+        run: >-
+          dotnet publish UmaMusumeAPI/UmaMusumeAPI.csproj
+          --configuration Release
+          --no-build
+          --output ./publish
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: UmaMusumeAPI-${{ github.sha }}
+          path: publish/
+          if-no-files-found: error
+          retention-days: 14
