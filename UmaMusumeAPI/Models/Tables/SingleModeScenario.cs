@@ -12,7 +12,7 @@ namespace UmaMusumeAPI.Models.Tables
         public int TurnSetId { get; set; }
         public int HintRate { get; set; }
         public int StartDate { get; set; }
-        public int EndDate { get; set; }
+        public long EndDate { get; set; }
         public int BgId { get; set; }
         public int BgSubId { get; set; }
         public int BgOffsetX { get; set; }

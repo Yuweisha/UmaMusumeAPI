@@ -14781,7 +14781,7 @@ namespace UmaMusumeAPI.Context
                     .HasColumnType("int(11)")
                     .HasColumnName("chara_program_change_flag");
                 entity.Property(e => e.EndDate)
-                    .HasColumnType("int(11)")
+                    .HasColumnType("bigint(20)")
                     .HasColumnName("end_date");
                 entity.Property(e => e.GimmickDiscountRate)
                     .HasColumnType("int(11)")
