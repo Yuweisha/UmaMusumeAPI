@@ -69,7 +69,7 @@ namespace UmaMusumeAPI
                     {
                         Name = "GitHub",
                         Email = string.Empty,
-                        Url = new Uri("https://github.com/SimpleSandman/UmaMusumeAPI")
+                        Url = new Uri("https://github.com/Yuweisha/UmaMusumeAPI")
                     },
                     License = new OpenApiLicense
                     {

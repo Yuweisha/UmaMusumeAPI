@@ -8,6 +8,39 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="https://yuweisha.github.io/icons/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="https://yuweisha.github.io/icons/favicon-32.png">
+    <style>
+        /* 单列：一张卡片占满内容区 */
+        .api-layout {
+            width: min(var(--max-width), calc(100% - 40px));
+            margin: 38px auto 80px;
+            display: grid;
+            gap: 24px;
+        }
+
+        .api-card {
+            margin-bottom: 0;
+            padding: 26px 32px 30px;
+        }
+
+        .api-card .about-box {
+            padding: 22px 24px;
+        }
+
+        .api-card .tag-list {
+            margin-top: 18px;
+        }
+
+        @media (max-width: 650px) {
+            .api-layout {
+                width: calc(100% - 24px);
+                margin-top: 18px;
+            }
+
+            .api-card {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- =========================页眉========================== -->
@@ -16,105 +49,44 @@
             <a class="brand" href="https://buenavista.fans/" title="Yuweisha 主页">
                 <img class="brand-avatar" src="https://yuweisha.github.io/storage/mainpageheader.svg" alt="Yuweisha">
                 <span class="brand-name">Yuweisha</span>
-                <span class="brand-sub">接口</span>
+                <span class="brand-sub">Uma UMApi</span>
             </a>
             <nav class="header-nav">
                 <a href="https://buenavista.fans/">主页</a>
                 <a href="https://buenavista.fans/livestudio.html">UMA Live Studio</a>
                 <a href="https://buenavista.fans/docs/">Hachimi-BV Docs</a>
-                <a href="/docs/" class="active" aria-current="page">接口</a>
+                <a href="https://umapi.buenavista.fans/" class="active" aria-current="page">UMApi</a>
             </nav>
         </div>
     </header>
 
     <!-- =========================主体部分========================== -->
-    <main class="profile-layout">
-        <aside class="profile-sidebar" style="grid-area:1 / 1 / 2 / 2;">
-            <div class="avatar-wrapper">
-                <img class="avatar" src="https://yuweisha.github.io/storage/mainpageheader.svg" alt="Uma Musume API">
-            </div>
-            <h1 class="profile-name">Uma Musume API</h1>
-            <p class="profile-username">umapi.buenavista.fans</p>
-            <p class="profile-bio">
-                赛马娘 Pretty Derby 的只读数据接口，数据来自游戏本体的 master.mdb 与 meta，
-                按表结构原样导出，用 Swagger 直接查、直接试。
-            </p>
-            <div class="profile-links">
-                <div class="profile-item">
-                    <span class="item-icon">📦</span>
-                    <a href="https://github.com/Yuweisha/UmaMusumeAPI" target="_blank" rel="noopener">Yuweisha/UmaMusumeAPI</a>
-                </div>
-                <div class="profile-item">
-                    <span class="item-icon">🗄️</span>
-                    <span>MariaDB 13.0 · 691 张表</span>
-                </div>
-                <div class="profile-item">
-                    <span class="item-icon">🔄</span>
-                    <span>数据版本 2026-11-09</span>
-                </div>
-                <div class="profile-item">
-                    <span class="item-icon">🔐</span>
-                    <span>TLS 1.3 · 无需鉴权</span>
-                </div>
-            </div>
-        </aside>
-
-        <section class="profile-content">
-            <nav class="profile-tabs">
-                <a class="active" href="#about"><span>ℹ️</span>总览</a>
-                <a href="#api"><span>🔌</span>接口</a>
-                <a href="#data"><span>🗂️</span>数据</a>
-            </nav>
-
-            <section class="content-section" id="about">
-                <div class="section-heading">
-                    <h2>总览</h2>
-                    <a href="https://buenavista.fans/">返回主页 →</a>
-                </div>
-                <div class="about-box">
-                    <p>
-                        这是把 <strong>Uma Musume: Pretty Derby</strong> 的 <strong>master.mdb</strong> 与
-                        <strong>meta</strong>（游戏加密数据库，导入前自动解密）整体导入 MariaDB 后，
-                        由 ASP.NET Core 生成的只读 REST 接口。
-                    </p>
-                    <p>
-                        每个游戏数据表对应一个端点，例如 <strong>/api/TextData</strong>、
-                        <strong>/api/SkillData</strong>、<strong>/api/MetaA</strong>；
-                        全部端点、参数和返回结构见
-                        <a href="/docs/">接口文档</a>，也可直接取
-                        <a href="/swagger/v1/swagger.json">OpenAPI JSON</a> 自己生成客户端。
-                    </p>
-                    <p>
-                        接口只做透传，不含游戏内玩法逻辑；跨域已放开，可直接从网页调用。
-                        数据与素材版权归 Cygames 所有。
-                    </p>
-                </div>
-            </section>
-
-            <section class="content-section" id="api">
-                <div class="section-heading">
-                    <h2>接口</h2>
-                    <a href="/swagger/v1/swagger.json">swagger.json</a>
-                </div>
-                <div class="about-box">
-                    <p>
-                        1386 个路径 / 695 个模型，按表名分组，可以直接在页面上「Try it out」。
-                    </p>
-                    <p>
-                        <a class="edit-profile" style="display:inline-block;width:auto;padding:10px 22px;text-decoration:none;"
-                           href="/docs/">打开接口文档 →</a>
-                    </p>
-                    <p>
-                        备用 UI：<a href="/rapidoc">RapiDoc</a>（暗色，适合看大 schema）。
-                    </p>
-                </div>
-            </section>
-
-            <section class="content-section" id="data">
-                <div class="section-heading">
-                    <h2>数据</h2>
-                    <a href="https://github.com/Yuweisha/UmaAPISQLBV">导入工具 →</a>
-                </div>
+    <main class="api-layout">
+        <section class="content-section api-card">
+            <div class="about-box">
+                <p>
+                    这是一个基于<strong>《赛马娘 Pretty Derby》（Uma Musume: Pretty Derby）</strong>的
+                    <strong>master.mdb</strong> 与 <strong>meta</strong> 文件构建的社区 <strong>REST API</strong>，
+                    数据存储在 <strong>MariaDB</strong> 数据库中。该项目遵循 <strong>Swagger UI/OpenAPI</strong> 规范。
+                </p>
+                <p>
+                    每个游戏数据表对应一个端点，例如 <strong>/api/TextData</strong>、
+                    <strong>/api/SkillData</strong>、<strong>/api/MetaA</strong>；
+                    全部端点、参数和返回结构见 <a href="/docs/">接口文档</a>，也可直接取
+                    <a href="/swagger/v1/swagger.json">OpenAPI JSON</a> 自己生成客户端。
+                </p>
+                <p>
+                    <strong>功能特性</strong><br>
+                    该 API 不仅提供了直接访问数据表的接口（<strong>endpoints</strong>），我还针对常用数据表创建了包含基础信息的视图（<strong>views</strong>）。此外，我还实现了一些存储过程（<strong>stored procedures</strong>），用于处理特定的计算逻辑，例如“<strong>因子继承相关性</strong>”及“<strong>推荐组合</strong>”计算。
+                </p>
+                <p>
+                    <strong>API 的整体结构如下：</strong><br>
+                    <strong>原始数据</strong>（直接从 meta 和 master.mdb 文件导入）<br>
+                    <strong>常用表的基础索引</strong>（接口名称以 'Basic' 为前缀）<br>
+                    <strong>包含外键关联的精简数据</strong>，便于生成报表（接口名称以 'Condensed' 为前缀）<br>
+                    <strong>经过整理、更易于阅读的常用信息</strong>（接口名称以 'Nice' 为前缀）<br>
+                    <strong>存储过程</strong>（接口名称以 'Sp' 为前缀）
+                </p>
                 <div class="tag-list">
                     <span class="tag">691 张表</span>
                     <span class="tag">meta_a 373775 行</span>
@@ -124,17 +96,16 @@
                     <span class="tag">248 MB</span>
                     <span class="tag">utf8mb4</span>
                 </div>
-            </section>
-
-            <footer class="site-footer">
-                <span>© 2026 Yuweisha · 数据与素材版权归 Cygames 所有</span>
-                <div class="footer-links">
-                    <a href="https://buenavista.fans/">主页</a>
-                    <a href="/docs/">接口文档</a>
-                    <a href="/swagger/v1/swagger.json">swagger.json</a>
-                </div>
-            </footer>
+            </div>
         </section>
+
+        <footer class="site-footer">
+            <span>© 2026 Yuweisha</span>
+            <div class="footer-links">
+                <a href="https://buenavista.fans/">主页</a>
+                <a href="/docs/">接口文档</a>
+            </div>
+        </footer>
     </main>
 </body>
 </html>
