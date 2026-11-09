@@ -8712,7 +8712,7 @@ namespace UmaMusumeAPI.Context
                     .HasColumnType("int(11)")
                     .HasColumnName("i");
                 entity.Property(e => e.C)
-                    .HasColumnType("int(8)")
+                    .HasColumnType("bigint(20)")
                     .HasColumnName("c");
                 entity.Property(e => e.D)
                     .HasColumnType("text")
@@ -14831,7 +14831,7 @@ namespace UmaMusumeAPI.Context
                     .HasColumnType("int(11)")
                     .HasColumnName("sort_id");
                 entity.Property(e => e.StartDate)
-                    .HasColumnType("int(11)")
+                    .HasColumnType("bigint(20)")
                     .HasColumnName("start_date");
                 entity.Property(e => e.TurnSetId)
                     .HasColumnType("int(11)")
@@ -16247,7 +16247,7 @@ namespace UmaMusumeAPI.Context
                     .HasColumnType("int(11)")
                     .HasColumnName("disp_order");
                 entity.Property(e => e.EndDate)
-                    .HasColumnType("int(11)")
+                    .HasColumnType("bigint(20)")
                     .HasColumnName("end_date");
                 entity.Property(e => e.ExpType)
                     .HasColumnType("int(11)")
@@ -16336,7 +16336,7 @@ namespace UmaMusumeAPI.Context
                     .HasColumnType("int(11)")
                     .HasColumnName("skill_category");
                 entity.Property(e => e.StartDate)
-                    .HasColumnType("int(11)")
+                    .HasColumnType("bigint(20)")
                     .HasColumnName("start_date");
                 entity.Property(e => e.TagId)
                     .IsRequired()
@@ -19997,13 +19997,13 @@ namespace UmaMusumeAPI.Context
                     .HasColumnType("text")
                     .HasColumnName("bgm_cuesheet_name");
                 entity.Property(e => e.EndDate)
-                    .HasColumnType("int(11)")
+                    .HasColumnType("bigint(20)")
                     .HasColumnName("end_date");
                 entity.Property(e => e.NoticeDate)
                     .HasColumnType("int(11)")
                     .HasColumnName("notice_date");
                 entity.Property(e => e.StartDate)
-                    .HasColumnType("int(11)")
+                    .HasColumnType("bigint(20)")
                     .HasColumnName("start_date");
             });
 

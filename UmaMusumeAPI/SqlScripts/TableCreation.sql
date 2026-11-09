@@ -4418,7 +4418,7 @@ ADD INDEX story_live_position_0_set_id (set_id);
 CREATE TABLE story_hip_offset (
   category_id int(11) NOT NULL,
   chara_id int(11) NOT NULL,
-  offset int(11) NOT NULL,
+  `offset` int(11) NOT NULL,
   PRIMARY KEY (category_id, chara_id)
 )
 ENGINE = INNODB,
@@ -11871,7 +11871,7 @@ CREATE TABLE homestory_hip_offset (
   num int(11) NOT NULL,
   story_id int(11) NOT NULL,
   chara_id int(11) NOT NULL,
-  offset int(11) NOT NULL
+  `offset` int(11) NOT NULL
 )
 ENGINE = INNODB,
 AVG_ROW_LENGTH = 1365,

@@ -72,8 +72,8 @@ namespace UmaMusumeAPI.Models.Tables
         public int IconId { get; set; }
         public int PlateType { get; set; }
         public int DisableSinglemode { get; set; }
-        public int StartDate { get; set; }
-        public int EndDate { get; set; }
+        public long StartDate { get; set; }
+        public long EndDate { get; set; }
         public int DisableCountCondition { get; set; }
         public int IsGeneralSkill { get; set; }
         public int AdditionalActivateType11 { get; set; }

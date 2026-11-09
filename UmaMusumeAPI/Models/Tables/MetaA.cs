@@ -10,7 +10,7 @@ namespace UmaMusumeAPI.Models.Tables
         public string D { get; set; }
         public int G { get; set; }
         public int L { get; set; }
-        public int C { get; set; }
+        public long C { get; set; }
         public string H { get; set; }
         public string M { get; set; }
         public int K { get; set; }
