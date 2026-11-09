@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -110,6 +110,10 @@ namespace UmaMusumeAPI
 
             app.UseCors("AllowAnyOrigin");
 
+            // Serve the static landing page in wwwroot at "/" (the API docs moved to /docs)
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -117,8 +121,11 @@ namespace UmaMusumeAPI
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("./swagger/v1/swagger.json", "UmaMusumeAPI v1");
-                c.RoutePrefix = string.Empty;
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "UmaMusumeAPI v1");
+
+                // The landing page owns "/"; the UI lives under /docs so the JSON path
+                // (/swagger/v1/swagger.json) stays where clients already expect it.
+                c.RoutePrefix = "docs";
             });
 
             // RapiDoc workaround
